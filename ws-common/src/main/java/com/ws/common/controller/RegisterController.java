@@ -1,4 +1,4 @@
-package com.ws.client.controller;
+package com.ws.common.controller;
 
 
 
@@ -6,14 +6,14 @@ import com.ws.common.entity.User;
 
 import com.ws.common.exception.UsernameInUseException;
 import com.ws.common.service.LoginService;
-import com.ws.client.service.RegisterService;
+import com.ws.common.service.RegisterService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.http.MediaType;
 
 
@@ -34,11 +34,16 @@ import java.util.List;
 )
 @Api(value = "RegistrationControllerAPI", produces = MediaType.APPLICATION_JSON_VALUE, description = "Registration and Get User")
 public class RegisterController {
-    @Autowired
+
     private LoginService userService;
+
     @Autowired
     private RegisterService registerService;
 
+
+    public RegisterController(LoginService userService ){
+        this.userService=userService;
+    }
 
     @PostMapping(value = "/register")
     @ApiOperation("register user")

@@ -60,8 +60,8 @@ public class ObjectController {
 
     @PostMapping(value = "/ajoutObject")
     @ApiOperation("ajout Object")
-    public Object ajoutObject(@ModelAttribute Object object,@RequestParam("Photo") MultipartFile file) {
-        return objectService.addObject(object,file);
+    public Object ajoutObject(@ModelAttribute Object object) {
+        return objectService.addObject(object);
     }
 
     @PostMapping(value = "/updateObject/{Id}")

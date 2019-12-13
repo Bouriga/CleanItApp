@@ -1,4 +1,4 @@
-package com.ws.client.service;
+package com.ws.common.service;
 
 import com.ws.common.entity.EventLog;
 import com.ws.common.entity.User;
@@ -13,5 +13,7 @@ public interface RegisterService {
     void createEvent(EventLog event_log);
 
     User register(@RequestBody User user) throws UsernameInUseException, UnknownHostException;
+
+    void createUser(User user);
 
 }

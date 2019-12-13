@@ -13,7 +13,7 @@ public interface ObjectService {
 
     void createObject(Object object);
 
-    Object addObject(@ModelAttribute Object object, @RequestParam("Photo") MultipartFile file);
+    Object addObject(@ModelAttribute Object object);
 
     String savePhoto(InputStream photo, String title) throws Exception;
 }

@@ -1,4 +1,4 @@
-package com.ws.client.service.impl;
+package com.ws.common.service.impl;
 
 import com.ws.common.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;

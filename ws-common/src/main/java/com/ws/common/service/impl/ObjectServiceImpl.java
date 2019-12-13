@@ -9,9 +9,7 @@ import com.flickr4java.flickr.auth.Auth;
 import com.flickr4java.flickr.auth.AuthInterface;
 import com.flickr4java.flickr.auth.Permission;
 import com.flickr4java.flickr.uploader.UploadMetaData;
-import com.ws.common.entity.ImageModel;
 import com.ws.common.entity.Object;
-import com.ws.common.repository.ImageRepository;
 import org.scribe.model.Verifier;
 import com.ws.common.repository.ObjectRepository;
 import com.ws.common.service.ObjectService;
@@ -43,10 +41,7 @@ public class ObjectServiceImpl implements ObjectService {
     private ObjectService objectService;
 
 
-    @Autowired
-    ImageRepository imageRepository;
-
-    public void connect(){
+    public void connect() {
         flickr = new Flickr(apiKey, sharedSecret, new REST());
         Auth auth = new Auth();
         auth.setPermission(Permission.READ);
@@ -57,7 +52,7 @@ public class ObjectServiceImpl implements ObjectService {
         flickr.setAuth(auth);
     }
 
-    public void auth(){
+    public void auth() {
         flickr = new Flickr(apiKey, sharedSecret, new REST());
 
         AuthInterface authInterface = flickr.getAuthInterface();
@@ -94,7 +89,7 @@ public class ObjectServiceImpl implements ObjectService {
     }
 
     @Override
-    public String savePhoto(InputStream photo, String title) throws Exception{
+    public String savePhoto(InputStream photo, String title) throws Exception {
         connect();
         uploadMetaData.setTitle(title);
         String photoId = flickr.getUploader().upload(photo, uploadMetaData);
@@ -118,9 +113,8 @@ public class ObjectServiceImpl implements ObjectService {
     }
 
 
-
     @Override
-    public Object addObject(Object object,MultipartFile file) {
+    public Object addObject(Object object) {
         /*String photoUrl;
         if (object != null) {
             if (file != null && !file.isEmpty()) {
@@ -139,25 +133,10 @@ public class ObjectServiceImpl implements ObjectService {
                     }
                 }
             }*/
-        ImageModel img = null;
-        try {
-            img = new ImageModel( file.getOriginalFilename(),file.getContentType(),file.getBytes() );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        final ImageModel savedImage = imageRepository.save(img);
-        object.setPhoto(String.valueOf(savedImage));
-
-        System.out.println("Image saved");
-
-
-
             objectService.createObject(object);
 
-        return object;
-    }
+            return object;
+        }
 
 
 }

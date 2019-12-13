@@ -61,5 +61,8 @@ public class User implements Serializable {
     @ApiModelProperty(notes = "The Photo of user")
     private String Photo;
 
+    @ApiModelProperty(notes = "The account status of user")
+    private Boolean approved;
+
 
 }

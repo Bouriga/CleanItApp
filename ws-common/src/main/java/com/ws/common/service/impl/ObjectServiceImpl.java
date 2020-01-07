@@ -28,7 +28,6 @@ public class ObjectServiceImpl implements ObjectService {
 
     private final ObjectRepository objectrepository;
 
-
     private Flickr flickr;
 
     private UploadMetaData uploadMetaData = new UploadMetaData();
@@ -114,8 +113,8 @@ public class ObjectServiceImpl implements ObjectService {
 
 
     @Override
-    public Object addObject(Object object) {
-        /*String photoUrl;
+    public Object addObject(Object object,MultipartFile file) {
+        String photoUrl;
         if (object != null) {
             if (file != null && !file.isEmpty()) {
                 InputStream stream = null;
@@ -132,11 +131,14 @@ public class ObjectServiceImpl implements ObjectService {
                         e.printStackTrace();
                     }
                 }
-            }*/
+            }
+
+    }
             objectService.createObject(object);
 
             return object;
-        }
+
+    }
 
 
 }

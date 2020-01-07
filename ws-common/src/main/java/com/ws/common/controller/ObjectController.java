@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+
 import java.util.List;
 
 
@@ -35,9 +36,7 @@ public class ObjectController {
     @Autowired
     private ObjectService objectService;
 
-
     private final ObjectRepository objectrepository;
-
 
     @Autowired
     public ObjectController(ObjectRepository objectrepository) {
@@ -60,8 +59,8 @@ public class ObjectController {
 
     @PostMapping(value = "/ajoutObject")
     @ApiOperation("ajout Object")
-    public Object ajoutObject(@ModelAttribute Object object) {
-        return objectService.addObject(object);
+    public Object ajoutObject(@ModelAttribute Object object,@RequestParam("file") MultipartFile file) {
+        return objectService.addObject(object,file);
     }
 
     @PostMapping(value = "/updateObject/{Id}")
@@ -85,6 +84,7 @@ public class ObjectController {
 
         return object;
     }
+
 
 }
 

@@ -3,11 +3,8 @@ package com.ws.admin.controller;
 
 import com.ws.admin.repository.UserRepository;
 import com.ws.admin.service.UserService;
-import com.ws.common.entity.Object;
 import com.ws.common.entity.User;
-import com.ws.common.repository.ObjectRepository;
 import com.ws.common.service.LoginService;
-import com.ws.common.service.ObjectService;
 import com.ws.common.service.RegisterService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
